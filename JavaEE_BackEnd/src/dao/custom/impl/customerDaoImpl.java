@@ -8,6 +8,7 @@ import javax.json.Json;
 import javax.json.JsonArrayBuilder;
 import javax.json.JsonObjectBuilder;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -56,7 +57,15 @@ public class customerDaoImpl implements customerDAO {
 
     @Override
     public boolean add(customer customer) throws SQLException {
-        return false;
+        Connection connection = customerServlet.ds.getConnection();
+        PreparedStatement pstm = connection.prepareStatement("INSERT INTO customer VALUES(?,?,?,?)");
+        pstm.setObject(1, customer.getId());
+        pstm.setObject(2, customer.getName());
+        pstm.setObject(3, customer.getAddress());
+        pstm.setObject(4, customer.getSalary());
+        boolean b = pstm.executeUpdate() > 0;
+        connection.close();
+        return b;
     }
 
     @Override

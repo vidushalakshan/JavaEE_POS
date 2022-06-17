@@ -1,16 +1,23 @@
 package bo.custom.impl;
 
+import bo.BOFactory;
 import bo.custom.customerBO;
+import dao.DAOFactory;
+import dao.custom.impl.customerDaoImpl;
 import dto.customerDTO;
+import entity.customer;
 
 import javax.json.JsonArrayBuilder;
 import javax.json.JsonObjectBuilder;
 import java.sql.SQLException;
 
 public class customerBoImpl implements customerBO {
+
+    customerDaoImpl customerDAO = (customerDaoImpl) BOFactory.BOFactory().getBO(BOFactory.BOType.CUSTOMER);
+
     @Override
     public JsonArrayBuilder getAllCustomer() throws SQLException {
-        return null;
+        return customerDAO.getAll();
     }
 
     @Override
@@ -25,7 +32,8 @@ public class customerBoImpl implements customerBO {
 
     @Override
     public boolean addCustomer(customerDTO customerDTO) throws SQLException {
-        return false;
+        customer customer = new customer(customerDTO.getId(), customerDTO.getName(), customerDTO.getAddress(), customerDTO.getSalary());
+        return customerDAO.add(customer);
     }
 
     @Override
