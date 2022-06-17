@@ -1,12 +1,13 @@
 package bo.custom;
 
+import bo.SuperBO;
 import dto.itemDTO;
 
 import javax.json.JsonArrayBuilder;
 import javax.json.JsonObjectBuilder;
 import java.sql.SQLException;
 
-public interface itemBO {
+public interface itemBO extends SuperBO {
     JsonArrayBuilder getAllItems() throws SQLException;
 
     JsonObjectBuilder generateItemID() throws SQLException;

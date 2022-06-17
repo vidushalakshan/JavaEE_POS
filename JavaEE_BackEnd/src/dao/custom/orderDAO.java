@@ -1,4 +1,4 @@
-package dao.impl;
+package dao.custom;
 
 public interface orderDAO {
 }
