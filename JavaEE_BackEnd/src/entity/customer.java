@@ -4,12 +4,12 @@ public class customer {
     private String id;
     private String name;
     private String address;
-    private int salary;
+    private double salary;
 
     public customer() {
     }
 
-    public customer(String id, String name, String address, int salary) {
+    public customer(String id, String name, String address, double salary) {
         this.id = id;
         this.name = name;
         this.address = address;
@@ -40,11 +40,11 @@ public class customer {
         this.address = address;
     }
 
-    public int getSalary() {
+    public double getSalary() {
         return salary;
     }
 
-    public void setSalary(int salary) {
+    public void setSalary(double salary) {
         this.salary = salary;
     }
 

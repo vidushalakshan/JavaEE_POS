@@ -8,7 +8,11 @@ import bo.custom.impl.orderDetailsBoImpl;
 public class BOFactory {
     private static BOFactory boFactory;
 
-    private static BOFactory BOFactory(){
+    private BOFactory(){
+
+    }
+
+    public static BOFactory BOFactory(){
         if (boFactory == null){
             boFactory=new BOFactory();
         }
