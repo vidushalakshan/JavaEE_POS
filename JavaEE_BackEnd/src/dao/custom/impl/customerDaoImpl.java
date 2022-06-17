@@ -2,14 +2,17 @@ package dao.custom.impl;
 
 import dao.custom.customerDAO;
 import entity.customer;
+import servlet.customerServlet;
 
 import javax.json.Json;
 import javax.json.JsonArrayBuilder;
 import javax.json.JsonObjectBuilder;
+import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class customerDaoImpl implements customerDAO {
-    JsonObjectBuilder objectBuilder= Json.createObjectBuilder();
+    JsonObjectBuilder objectBuilder = Json.createObjectBuilder();
     JsonArrayBuilder arrayBuilder = Json.createArrayBuilder();
 
     @Override
@@ -24,7 +27,21 @@ public class customerDaoImpl implements customerDAO {
 
     @Override
     public JsonArrayBuilder getAll() throws SQLException {
-        return null;
+        Connection connection = customerServlet.ds.getConnection();
+        ResultSet resultSet = connection.prepareStatement("SELECT * FROM customer").executeQuery();
+        while (resultSet.next()) {
+            String id = resultSet.getString(1);
+            String name = resultSet.getString(2);
+            String address = resultSet.getString(3);
+            double salary = resultSet.getDouble(4);
+
+            objectBuilder.add("id", id);
+            objectBuilder.add("name", name);
+            objectBuilder.add("address", address);
+            objectBuilder.add("salary", salary);
+        }
+        connection.close();
+        return arrayBuilder;
     }
 
     @Override
