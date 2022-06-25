@@ -2,7 +2,6 @@ package bo.custom.impl;
 
 import bo.BOFactory;
 import bo.custom.customerBO;
-import dao.DAOFactory;
 import dao.custom.impl.customerDaoImpl;
 import dto.customerDTO;
 import entity.customer;
