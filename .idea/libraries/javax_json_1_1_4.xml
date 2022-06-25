@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="javax.json-1.1.4">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/JavaEE_BackEnd/src/lib/javax.json-1.1.4.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://$PROJECT_DIR$/JavaEE_BackEnd/src" />
+    </SOURCES>
+  </library>
+</component>
